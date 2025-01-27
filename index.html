@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bluemap-ecs</title>
+  <style>
+    @font-face {
+      font-family: 'Noto Sans';
+      src: url('/NotoSans.ttf');
+    }
+
+    * {
+      font-family: Noto Sans;
+    }
+  </style>
+</head>
+
+<body>
+  <obc-top-bar showappsbutton="" showdimmingbutton="" showclock="">
+    <obc-alert-button class="alert-button" nalerts="0" standalone="" slot="alerts" style="max-width: 48px;" alerttype="flat">
+    </obc-alert-button>
+    <obc-alert-topbar-element class="alert-display" slot="alerts" nalerts="0" maxwidth="480" alerttype="none">
+    </obc-alert-topbar-element>
+  </obc-top-bar>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

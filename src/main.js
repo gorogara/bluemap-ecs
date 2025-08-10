@@ -5,23 +5,50 @@ import { setupCounter } from './counter.js'
 
 import '@oicl/openbridge-webcomponents/src/palettes/variables.css';
 import '@oicl/openbridge-webcomponents/dist/components/top-bar/top-bar.js';
+import '@oicl/openbridge-webcomponents/dist/components/brilliance-menu/brilliance-menu.js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const htmlElement = document.documentElement;
 
-setupCounter(document.querySelector('#counter'))
+setupCounter(document.querySelector('#counter'));
+
+const topbar = document.querySelector('#top-bar');
+topbar.leftMoreButtonActivated = true;
+
+const brillianceMenu = document.querySelector('obc-brilliance-menu');
+//brillianceMenu.showAutoBrightness = false;
+brillianceMenu.showAutoPalette = false;
+brillianceMenu.hideBrightness = true;
+brillianceMenu.brightness = 50;
+brillianceMenu.palette = 'bright';
+brillianceMenu.style.display = 'none';
+
+function updateTime() {
+  const now = new Date();
+  const formattedTime = now.toISOString();
+  topbar.date = formattedTime;
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+topbar.addEventListener('menu-button-clicked', () => {
+  alert('Menu button clicked!');
+});
+
+topbar.addEventListener('dimming-button-clicked', () => {
+  //alert('Dimming button clicked!');
+  brillianceMenu.style.display = brillianceMenu.style.display == 'none' ? 'block' : 'none';
+});
+
+topbar.addEventListener('apps-button-clicked', () => {
+  alert('Apps button clicked!');
+});
+
+topbar.addEventListener('left-more-button-clicked', () => {
+  alert('Left-more button clicked!');
+});
+
+brillianceMenu.addEventListener('palette-changed', (event) => {
+  const palette = brillianceMenu.palette;
+  htmlElement.setAttribute('data-obc-theme', palette);
+});

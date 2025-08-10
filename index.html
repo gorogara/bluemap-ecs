@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-obc-theme="bright">
 
 <head>
   <meta charset="UTF-8" />
@@ -19,13 +19,24 @@
 </head>
 
 <body>
-  <obc-top-bar showappsbutton="" showdimmingbutton="" showclock="">
-    <obc-alert-button class="alert-button" nalerts="0" standalone="" slot="alerts" style="max-width: 48px;" alerttype="flat">
-    </obc-alert-button>
-    <obc-alert-topbar-element class="alert-display" slot="alerts" nalerts="0" maxwidth="480" alerttype="none">
-    </obc-alert-topbar-element>
-  </obc-top-bar>
-  <div id="app"></div>
+  <div id="app">
+    <obc-top-bar id="top-bar" showappsbutton="" showdimmingbutton="" showclock="">
+      <obc-alert-button class="alert-button" nalerts="0" standalone="" slot="alerts" style="max-width: 48px;" alerttype="flat">
+      </obc-alert-button>
+      <obc-alert-topbar-element class="alert-display" slot="alerts" nalerts="0" maxwidth="480" alerttype="none">
+      </obc-alert-topbar-element>
+    </obc-top-bar>
+    <obc-brilliance-menu></obc-brilliance-menu>
+    <div>
+      <h1>Hello Vite!</h1>
+      <div class="card">
+        <button id="counter" type="button"></button>
+      </div>
+      <p class="read-the-docs">
+        Click on the Vite logo to learn more
+      </p>
+    </div>
+  </div>
   <script type="module" src="/src/main.js"></script>
 </body>
 
